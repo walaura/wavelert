@@ -14,9 +14,9 @@ Add wavelert.js after jquery. Wavelert requires jQuery because I'm too lazy to u
 				dark: true,
 				icon: 'alert'
 			}).success(function(){
-				console.log('🙆🏽');
+				console.log('✨');
 			}).fail(function(){
-				console.log('🙎');
+				console.log('💩');
 			})
 		});
 	})
