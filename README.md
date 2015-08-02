@@ -8,7 +8,7 @@ Regular alerts just look worse and less cool than they used to. Also, I wanted t
 ## Browser usage
 Add wavelert.js after jquery. Wavelert requires jQuery because I'm too lazy to use queryselector so you'll have to deal with that, sorry.
 
-See index.html for details
+See index.html or [This page](http://lawwrr.github.io/Wavelert/) for details
 
 	$('.🆒').on('click',function(){
 		wavelert.confirm({
