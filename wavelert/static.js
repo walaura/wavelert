@@ -148,7 +148,7 @@ export var css =
 	width: 5em;
 }`;
 
-export var html =
+export var windowTemplate =
 `<div class="wavelert-wrapper">
 	<div class="wavelert-u-surface wavelert-window">
 		<div class="wavelert-title">
@@ -156,10 +156,7 @@ export var html =
 		</div>
 		<div class="wavelert-dialog">
 			<div class="wavelert-dialog-message"></div>
-			<div class="wavelert-dialog-buttons">
-				<a class="wavelert-u-surface wavelert-button wavelert-js-cool" href="#">OK</a>
-				<a class="wavelert-u-surface wavelert-button wavelert-js-close" href="#">Cancel</a>
-			</div>
+			<div class="wavelert-dialog-buttons"></div>
 		</div>
 	</div>
 </div>`;

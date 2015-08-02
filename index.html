@@ -53,13 +53,14 @@
 	<script>
 		$(function(){
 			$('.button--larger').on('click',function(){
-				wavelert({
+				wavelert.confirm({
+					title: 'Wololo',
 					dark: true,
 					icon: 'alert'
 				}).success(function(){
-					console.log('🙆🏽');
-				}).fail(function(){
-					console.log('🙎');
+		            wavelert.alert('✨ all is good ✨');
+		        }).fail(function(){
+		            wavelert.alert('💩 you dismissed the alert 💩');
 				})
 			});
 		})
