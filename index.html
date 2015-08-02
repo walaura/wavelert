@@ -52,6 +52,11 @@
 	
 	<script>
 		$(function(){
+			wavelert.alert({
+				title: 'Wavelert',
+				dark: true,
+				text: 'Wavelert is a small javascript library that lets you display Windows-98 styled alerts & confirms'
+			});
 			$('.button--larger').on('click',function(){
 				wavelert.confirm({
 					title: 'Wololo',
@@ -69,7 +74,7 @@
  
 <body>
 	
-	<a class="button button--larger" href="#">Click here</a>
+	<a class="button button--larger" href="#">Click for a demo</a>
 	<a class="button" href="https://github.com/lawwrr/Wavelert">Get the code</a>
 		
 </body>
