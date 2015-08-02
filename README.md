@@ -10,7 +10,7 @@ Also, Wavelert requires jQuery because I'm too lazy to use queryselector so you'
 
 
 ## ES6 browser usage
-With jQuery already loaded, import either alert or confirm, then init it and place() it on the html. You don't need wavelert.min.js
+With jQuery already loaded, import any module, then init it and place() it on the html. You don't need wavelert.min.js
 
 	import {Alert}   from 'wavelert/alert';
 	import {Confirm} from 'wavelert/confirm';
@@ -18,10 +18,10 @@ With jQuery already loaded, import either alert or confirm, then init it and pla
 	$('.🆒').on('click',function(){
 		var cf = new Confirm('Are you sure?').place()
 		cf.success(function(){
-	        new Alert('✨ all is good ✨');
+	        new Alert('✨ all is good ✨').place();
 	    })
 	    cf.fail(function(){
-	        new Alert('💩 you dismissed the alert 💩');
+	        new Alert('💩 you dismissed the alert 💩').place();
 		});
 	});
 
