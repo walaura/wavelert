@@ -1,4 +1,11 @@
-import {windowTemplate}  from '../static';
+import {windowTemplate,css}  from '../static/static';
+
+jQuery(function(){
+	if(jQuery.find('style.wavelert-styles').length < 1) {
+		jQuery('body').append(`<style type="text/css" class="wavelert-styles">${css}</style>`);
+	}
+});
+
 export class WaveWindow {
 		
 	/*
@@ -53,6 +60,9 @@ export class WaveWindow {
 		}
 		if(params.title) {
 			self.$window.find('.wavelert-title').prepend(params.title)
+		}
+		if(params.theme) {
+			self.$window = self.$window.wrap(`<div class="wavelert-u-theme wavelert-u-theme--${params.theme}"></div>`).parent();
 		}
 						
 		self.$window.on('click','.wavelert-js-close',function(ev){

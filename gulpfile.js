@@ -5,11 +5,11 @@ var source = require('vinyl-source-stream');
 
 gulp.task('default', function() {
     browserify({
-	    entries: './wavelert.js',
+	    entries: './wavelert/dist/_es5export.js',
 	    debug: true
     })
     .transform(babelify)
     .bundle()
-    .pipe(source('wavelert.js'))
+    .pipe(source('wavelert.min.js'))
     .pipe(gulp.dest('./dist'));
 });

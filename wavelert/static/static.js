@@ -42,9 +42,19 @@ export var css =
 	border-right-color: rgba(0,0,0,.5);
 	border-bottom-color: rgba(0,0,0,.5);
 }
-
 .wavelert-u-surface * {
 	z-index: 10;
+}
+.wavelert-u-surfaceActive {
+	background: #000080;
+	color: #fff;
+}
+
+.wavelert-u-theme--pink .wavelert-u-surface {
+	background: #d068d9;
+}
+.wavelert-u-theme--pink .wavelert-u-surfaceActive {
+	background: #00ff00;
 }
 
 .wavelert-wrapper {
@@ -106,12 +116,11 @@ export var css =
 }
 
 .wavelert-title {
-	background: #000080;
-	background: linear-gradient(to right, #000080,#1381d0);
 	padding: .25em .25em .25em .5em;
 	height: 1.2em;
 	font-weight: 800;
-	color: #fff;
+    background-image: linear-gradient(to right, rgba(255,255,255,0),rgba(255,255,255,1)), linear-gradient(to right, rgba(255,255,255,0),rgba(255,255,255,.2));
+    background-blend-mode: overlay, lighten;
 }
 .wavelert-title-button {
 	float: right;
@@ -151,7 +160,7 @@ export var css =
 export var windowTemplate =
 `<div class="wavelert-wrapper">
 	<div class="wavelert-u-surface wavelert-window">
-		<div class="wavelert-title">
+		<div class="wavelert-u-surfaceActive wavelert-title">
 			<div class="wavelert-u-surface wavelert-button wavelert-title-button"><span class="wavelert-js-close wavelert-u-glyph wavelert-u-glyph--close"></span></div>
 		</div>
 		<div class="wavelert-dialog">

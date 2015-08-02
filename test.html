@@ -5,7 +5,7 @@
 	<title>Wavelert</title> 
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-	<script src="dist/wavelert.js"></script>
+	<script src="dist/wavelert.min.js"></script>
 	
 	<script>
 		$(function(){
@@ -15,7 +15,10 @@
 					dark: true,
 					icon: 'alert'
 				}).success(function(){
-		            wavelert.alert('✨ all is good ✨');
+		            wavelert.alert({
+			            text:'✨ all is good ✨',
+			            theme: 'pink'
+					});
 		        }).fail(function(){
 		            wavelert.alert('💩 you dismissed the alert 💩');
 				})
