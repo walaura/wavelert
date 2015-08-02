@@ -10,8 +10,7 @@ export class WaveWindow {
 		
 	/*
 		false promise bc I really don't want to find out how ES6 to ES4 promises work right now
-	*/	
-	
+	*/
 	success(callback){
 		this._onSuccess = callback;
 		return this;
@@ -27,6 +26,65 @@ export class WaveWindow {
 	
 	parseParams(params){
 		return params;
+	}
+	
+	handleDrag() {
+		var self = this;
+		var delta = false;;
+		self.$window.on('mousedown','.wavelert-title',function(ev){
+			var cssDelta = [
+				isNaN(parseInt(self.$window.find('.wavelert-window').css('left')))?0:parseInt(self.$window.find('.wavelert-window').css('left')),
+				isNaN(parseInt(self.$window.find('.wavelert-window').css('top')))?0:parseInt(self.$window.find('.wavelert-window').css('top'))
+			]
+			if(delta === false) {
+				delta = [ev.screenX,ev.screenY];
+			}
+			jQuery(window).one('mouseup.wavelert-dragOperation',function(ev){
+				delta = false;
+				jQuery(window).off('.wavelert-dragOperation');
+			});
+			jQuery(window).on('mousemove.wavelert-dragOperation',function(ev){
+				self.$window.find('.wavelert-window').css({
+					left: cssDelta[0]+ev.screenX-delta[0],
+					top: cssDelta[1]+ev.screenY-delta[1]
+				})
+			})
+		})
+	}
+	
+	handleClose() {
+		var self = this;
+		self.$window.on('click','.wavelert-js-close',function(ev){
+			ev.preventDefault();
+			ev.stopPropagation();
+			self.$window.remove();
+			if($(ev.currentTarget).hasClass('wavelert-js-close--cool')) {
+				self._onSuccess();
+			}
+			else {
+				self._onFail();	
+			}
+		})
+	}
+	
+	getHighestZIndex() {
+		var highestZIndex = 9999;
+		jQuery('.wavelert-wrapper').each(function(){
+			var zIndex = parseInt(jQuery(this).css('z-index'), 10);
+			if(zIndex > highestZIndex) {
+				highestZIndex = zIndex;
+			}
+		})
+		return highestZIndex;
+	}
+	
+	handleTopVisibility() {
+		var self = this;
+		self.$window.on('mousedown','.wavelert-window',function(ev){
+			if(self.getHighestZIndex() !== parseInt(self.$window.css('z-index'),10)){			
+				self.$window.css('z-index',self.getHighestZIndex()+1);
+			}
+		});
 	}
 
 	constructor(params)	{
@@ -52,6 +110,7 @@ export class WaveWindow {
 		
 		self.$window.find('.wavelert-dialog-buttons').append(params.buttons);	
 		self.$window.find('.wavelert-dialog-message').text(params.text);
+		self.$window.css('z-index',self.getHighestZIndex()+1);
 		if(params.dark) {
 			self.$window.addClass('wavelert-wrapper--dark');
 		}
@@ -62,20 +121,12 @@ export class WaveWindow {
 			self.$window.find('.wavelert-title').prepend(params.title)
 		}
 		if(params.theme) {
-			self.$window = self.$window.wrap(`<div class="wavelert-u-theme wavelert-u-theme--${params.theme}"></div>`).parent();
+			self.$window = self.$window.wrapInner(`<div class="wavelert-u-theme wavelert-u-theme--${params.theme}"></div>`);
 		}
 						
-		self.$window.on('click','.wavelert-js-close',function(ev){
-			ev.preventDefault();
-			ev.stopPropagation();
-			self.$window.remove();
-			if($(ev.currentTarget).hasClass('wavelert-js-close--cool')) {
-				self._onSuccess();
-			}
-			else {
-				self._onFail();	
-			}
-		})
-
+		self.handleClose();
+		self.handleDrag();
+		self.handleTopVisibility();
+		
 	}		
 }

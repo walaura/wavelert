@@ -23,10 +23,24 @@
 		            wavelert.alert('💩 you dismissed the alert 💩');
 				})
 			});
+			$('.window').on('click',function(){
+				wavelert.confirm({
+					title: 'Wololo',
+					icon: 'alert'
+				}).success(function(){
+		            wavelert.alert({
+			            text:'✨ all is good ✨',
+			            theme: 'pink'
+					});
+		        }).fail(function(){
+		            wavelert.alert('💩 you dismissed the alert 💩');
+				})
+			});
 		})
 	</script>
 </head> 
  
 <body>
-	<a class="test" href="#">----</a>
+	<button class="test" href="#">confirm</button>
+	<button class="window" href="#">window</button>
 </body>

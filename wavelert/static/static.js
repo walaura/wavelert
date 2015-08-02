@@ -25,6 +25,7 @@ export var css =
 	user-select: none;
 	user-drag: none;
 	cursor: default;
+	pointer-events:all;
 }
 .wavelert-u-surface:after,
 .wavelert-u-surface:before {
@@ -69,8 +70,10 @@ export var css =
 	align-items: center;
 	justify-content: center;
 	padding-bottom: 4em;
+	pointer-events:none;
 }
 .wavelert-wrapper--dark {
+	pointer-events: all;
 	background: url(data:image/gif;base64,R0lGODlhAgACAIAAAP///wAAACH5BAEAAAAALAAAAAACAAIAQAIDDBAFADs=);
 }
 
