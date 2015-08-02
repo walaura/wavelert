@@ -7,10 +7,20 @@ jQuery(function(){
 });
 
 export class WaveWindow {
+	
+	constructor(params)	{
+		var self = this;
+		
+		this._onSuccess = function(){};
+		this._onFail = function(){};
+		
+		this.params = this.parseParams(params);
+		this.buildWindow(params);
+	}
 		
 	/*
 		false promise bc I really don't want to find out how ES6 to ES4 promises work right now
-	*/
+	*/	
 	success(callback){
 		this._onSuccess = callback;
 		return this;
@@ -24,7 +34,22 @@ export class WaveWindow {
 		return this;
 	};
 	
+	get clientArea() {
+		return params.text;
+	}
+	
 	parseParams(params){
+		if(typeof params === 'string') {
+			params = {
+				'text': params
+			};
+		}
+		if(!params) {
+			params = {};
+		}
+		if(!params.text) {
+			params.text = 'The window at '+window.location.href+' says nothing';
+		}
 		return params;
 	}
 	
@@ -86,47 +111,33 @@ export class WaveWindow {
 			}
 		});
 	}
-
-	constructor(params)	{
-		
+	
+	buildWindow(params){
 		var self = this;
-		
-		this._onSuccess = function(){};
-		this._onFail = function(){};
 		self.$window = jQuery(windowTemplate);
-		
-		if(typeof params === 'string') {
-			params = {
-				'text': params
-			};
-		}
-		if(!params) {
-			params = {};
-		}
-		if(!params.text) {
-			params.text = 'The window at '+window.location.href+' says nothing';
-		}
-		params = this.parseParams(params);
-		
-		self.$window.find('.wavelert-dialog-buttons').append(params.buttons);	
-		self.$window.find('.wavelert-dialog-message').text(params.text);
-		self.$window.css('z-index',self.getHighestZIndex()+1);
 		if(params.dark) {
 			self.$window.addClass('wavelert-wrapper--dark');
-		}
-		if(params.icon) {
-			self.$window.find('.wavelert-dialog-message').prepend(`<span class="wavelert-js-close wavelert-u-glyph wavelert-u-glyph--${params.icon}"></span>`)
 		}
 		if(params.title) {
 			self.$window.find('.wavelert-title').prepend(params.title)
 		}
 		if(params.theme) {
-			self.$window = self.$window.wrapInner(`<div class="wavelert-u-theme wavelert-u-theme--${params.theme}"></div>`);
+			self.$window = self.$window.wrap(`<div class="wavelert-u-theme wavelert-u-theme--${params.theme}"></div>`).parent();
 		}
+		if(params.width) {
+			this.$window.find('.wavelert-window').css('width',params.width);
+		}
+		if(params.height) {
+			this.$window.find('.wavelert-window').css('height',params.height);
+		}
+		
+		this.$window.css('z-index',this.getHighestZIndex()+1);
+		this.$window.find('.wavelert-clientArea').html(self.clientArea);
 						
 		self.handleClose();
 		self.handleDrag();
 		self.handleTopVisibility();
-		
-	}		
+
+	}
+	
 }

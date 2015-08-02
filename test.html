@@ -36,6 +36,13 @@
 		            wavelert.alert('💩 you dismissed the alert 💩');
 				})
 			});
+			$('.browser').on('click',function(){
+				wavelert.browser({
+					text: '<h1>Yolo</h1>',
+					width: 500,
+					height: 400
+				});
+			});
 		})
 	</script>
 </head> 
@@ -43,4 +50,5 @@
 <body>
 	<button class="test" href="#">confirm</button>
 	<button class="window" href="#">window</button>
+	<button class="browser" href="#">browser</button>
 </body>

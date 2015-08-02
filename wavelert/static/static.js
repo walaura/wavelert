@@ -25,7 +25,6 @@ export var css =
 	user-select: none;
 	user-drag: none;
 	cursor: default;
-	pointer-events:all;
 }
 .wavelert-u-surface:after,
 .wavelert-u-surface:before {
@@ -50,6 +49,32 @@ export var css =
 	background: #000080;
 	color: #fff;
 }
+.wavelert-u-surfaceContent {
+	background: #fff;
+	position: relative;
+	border: 1px solid #000;
+	border-bottom-color: rgba(255,255,255,.75);
+	border-right-color: rgba(255,255,255,.75);
+}
+.wavelert-u-surfaceContent * {
+	z-index: 10;
+}
+.wavelert-u-surfaceContent:before {
+	content: '\\0020';
+	position: absolute;
+	z-index: 9;
+	pointer-events: none;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: -2px;
+	border: 1px solid #000;
+	border-top-color: rgba(0,0,0,.25);
+	border-left-color: rgba(0,0,0,.25);
+	border-right-color: rgba(255,255,255,.25);
+	border-bottom-color: rgba(255,255,255,.25);
+}
 
 .wavelert-u-theme--pink .wavelert-u-surface {
 	background: #d068d9;
@@ -70,10 +95,8 @@ export var css =
 	align-items: center;
 	justify-content: center;
 	padding-bottom: 4em;
-	pointer-events:none;
 }
 .wavelert-wrapper--dark {
-	pointer-events: all;
 	background: url(data:image/gif;base64,R0lGODlhAgACAIAAAP///wAAACH5BAEAAAAALAAAAAACAAIAQAIDDBAFADs=);
 }
 
@@ -111,12 +134,35 @@ export var css =
 	max-width: 300px;
 	font-size: .7em;
 	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	align-content: stretch;
 }
-
 .wavelert-window:before {
 	border-top-color: rgba(255,255,255,.75);
 	border-left-color: rgba(255,255,255,.75);
 }
+.wavelert-window .wavelert-title {
+	flex: 0 0 auto;
+	min-height: 1px;
+}
+.wavelert-window .wavelert-clientArea {
+	flex: 1 0 auto;
+	min-height: 1px;
+}
+
+.wavelert-clientArea {
+	position: relative;
+}
+
+
+.wavelert-content {
+	padding: .5em;
+	margin: .25em .15em .15em .15em;
+	overflow: scroll;
+}
+
 
 .wavelert-title {
 	padding: .25em .25em .25em .5em;
@@ -160,15 +206,20 @@ export var css =
 	width: 5em;
 }`;
 
+export var dialogTemplate =
+`
+<div class="wavelert-dialog">
+	<div class="wavelert-dialog-message"></div>
+	<div class="wavelert-dialog-buttons"></div>
+</div>
+`
+
 export var windowTemplate =
 `<div class="wavelert-wrapper">
 	<div class="wavelert-u-surface wavelert-window">
 		<div class="wavelert-u-surfaceActive wavelert-title">
 			<div class="wavelert-u-surface wavelert-button wavelert-title-button"><span class="wavelert-js-close wavelert-u-glyph wavelert-u-glyph--close"></span></div>
 		</div>
-		<div class="wavelert-dialog">
-			<div class="wavelert-dialog-message"></div>
-			<div class="wavelert-dialog-buttons"></div>
-		</div>
+		<div class="wavelert-clientArea"></div>
 	</div>
 </div>`;

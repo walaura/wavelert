@@ -1,12 +1,11 @@
-import {WaveWindow}  from './global/wavewindow';
-export class Confirm extends WaveWindow {
+import {Dialog}  from './global/dialog';
+export class Confirm extends Dialog {
 	
-	parseParams(params){
-		params.buttons = `
+	get buttons(){
+		return `
 			<a class="wavelert-u-surface wavelert-button wavelert-js-close wavelert-js-close--cool" href="#">OK</a>
 			<a class="wavelert-u-surface wavelert-button wavelert-js-close" href="#">Cancel</a>
-		`;
-		return params;
+		`
 	}
 		
 }

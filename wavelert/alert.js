@@ -1,11 +1,10 @@
-import {WaveWindow}  from './global/wavewindow';
-export class Alert extends WaveWindow {
+import {Dialog}  from './global/dialog';
+export class Alert extends Dialog {
 	
-	parseParams(params){
-		params.buttons = `
+	get buttons(){
+		return `
 			<a class="wavelert-u-surface wavelert-button wavelert-js-close wavelert-js-close--cool" href="#">OK</a>
-		`;
-		return params;
+		`
 	}
 		
 }
