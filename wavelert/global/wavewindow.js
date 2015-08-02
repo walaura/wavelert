@@ -122,7 +122,7 @@ export class WaveWindow {
 			self.$window.find('.wavelert-title').prepend(params.title)
 		}
 		if(params.theme) {
-			self.$window = self.$window.wrap(`<div class="wavelert-u-theme wavelert-u-theme--${params.theme}"></div>`).parent();
+			self.$window = self.$window.wrapInner(`<div class="wavelert-u-theme wavelert-u-theme--${params.theme}"></div>`);
 		}
 		if(params.width) {
 			this.$window.find('.wavelert-window').css('width',params.width);

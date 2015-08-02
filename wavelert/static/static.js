@@ -95,9 +95,14 @@ export var css =
 	align-items: center;
 	justify-content: center;
 	padding-bottom: 4em;
+	pointer-events: none;
 }
 .wavelert-wrapper--dark {
 	background: url(data:image/gif;base64,R0lGODlhAgACAIAAAP///wAAACH5BAEAAAAALAAAAAACAAIAQAIDDBAFADs=);
+	pointer-events: all;
+}
+.wavelert-wrapper * {
+	pointer-events: all;
 }
 
 .wavelert-button {
