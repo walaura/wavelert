@@ -1,0 +1,74 @@
+<!DOCTYPE html> 
+<html>
+<head> 
+	<meta charset="utf-8"/> 
+	<title>Wavelert</title> 
+	
+	<style type="text/css">
+		html {
+			height: 100%;
+			overflow: hidden;
+		}
+		body {
+			margin: 0;
+			padding: 0;
+			background: #78acdc url(http://i.imgur.com/iPTRtKC.jpg) center center;
+			background-size: cover;
+			height: 100%;
+			display: flex;
+			align-content: center;
+			align-items: center;
+			justify-content: center;
+			flex-direction: column;
+		}
+		.button {
+			font: .7em tahoma, verdana, sans-serif;
+			text-decoration: none;
+			color: #000;
+			letter-spacing: .05em;
+			padding: 1em 2em;
+			-webkit-font-smoothing: none;
+			font-smoothing: none;
+			background: #c0c0c0;
+			border: 1px solid #000;
+			border-top-color: rgba(255,255,255,.75);
+			border-left-color: rgba(255,255,255,.75);
+		}
+		.button:active {
+			border-bottom-color: rgba(255,255,255,.75);
+			border-right-color: rgba(255,255,255,.75);
+			border-top-color: #000;
+			border-left-color: #000;
+		}
+		.button--larger {
+			margin-bottom: 1em;
+			padding: 1.5em 6em;
+			text-transform: uppercase;
+		}
+	</style>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="dist/wavelert.js"></script>
+	
+	<script>
+		$(function(){
+			$('.button--larger').on('click',function(){
+				wavelert({
+					dark: true,
+					icon: 'alert'
+				}).success(function(){
+					console.log('🙆🏽');
+				}).fail(function(){
+					console.log('🙎');
+				})
+			});
+		})
+	</script>
+</head> 
+ 
+<body>
+	
+	<a class="button button--larger" href="#">Click here</a>
+	<a class="button" href="https://github.com/lawwrr/Wavelert">Get the code</a>
+		
+</body>
