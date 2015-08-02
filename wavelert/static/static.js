@@ -164,8 +164,7 @@ export var css =
 
 .wavelert-content {
 	padding: .5em;
-	margin: .25em .15em .15em .15em;
-	overflow: scroll;
+	margin: .35em .15em .15em .15em;
 }
 
 
