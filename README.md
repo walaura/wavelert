@@ -8,20 +8,19 @@ Regular alerts just look worse and less cool than they used to. Also, I wanted t
 ## Browser usage
 Add wavelert.js after jquery. Wavelert requires jQuery because I'm too lazy to use queryselector so you'll have to deal with that, sorry.
 
-See demo/index.html for details
+See index.html for details
 
-	$(function(){
-		$('.yolo').on('click',function(){
-			wavelert({
-				dark: true,
-				icon: 'alert'
-			}).success(function(){
-				console.log('✨');
-			}).fail(function(){
-				console.log('💩');
-			})
-		});
-	})
+	$('.🆒').on('click',function(){
+		wavelert.confirm({
+			title: 'Wololo',
+			dark: true,
+			icon: 'alert'
+		}).success(function(){
+            wavelert.alert('✨ all is good ✨');
+        }).fail(function(){
+            wavelert.alert('💩 you dismissed the alert 💩');
+		})
+	});
 
 ## Building
 Just install gulp if you don't have it already
