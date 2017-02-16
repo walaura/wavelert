@@ -1,7 +1,7 @@
 # Wavelert
 Windows 98 style javascript prompts.
 
-![lol](https://raw.github.com/lawwrr/Wavelert/master/screenshot.gif?lol)
+![lol](https://raw.github.com/walaura/Wavelert/master/screenshot.gif?lol)
 
 
 ## But…why?
