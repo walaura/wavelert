@@ -30,7 +30,7 @@ With jQuery already loaded, import any module, then init it and place() it on th
 ## Legacy browser usage
 With jQuery already loaded, add a regular script tag for dist/wavelert.min.js. You can use wavelert.confirm and wavelert.alert
 
-Check the [live demo](http://walaura.github.io/Wavelert/) for details.
+Check the [live demo](http://walaura.github.io/wavelert/) for details.
 
 	$('.🆒').on('click',function(){
 		wavelert.confirm({
