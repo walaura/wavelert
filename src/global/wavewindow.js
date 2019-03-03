@@ -1,73 +1,104 @@
-import createWindow from './window.js';
+import { $element } from '../util';
+import {
+	window as windowCss,
+	titleButton,
+	windowTitle,
+	wrapper,
+} from './WaveWindow.css';
+import closeIcon from '../static/close.gif';
 
-const parseParams = params => {
-	if (typeof params === 'string') {
-		params = {
-			text: params,
-		};
-	}
-	if (!params) {
-		params = {};
-	}
-	if (!params.text) {
-		params.text = 'The window at ' + window.location.href + ' says nothing';
-	}
-	return params;
+let maxZIndex = 10;
+
+const createTitle = ({ title, onMove, onMoveStart, onClose }) => {
+	let mousedown = false;
+	let pos = [0, 0];
+
+	const $title = $element('header', { class: windowTitle }, [
+		title,
+		$element(
+			'button',
+			{
+				class: titleButton,
+				onClick: onClose,
+			},
+			$element('img', { src: closeIcon })
+		),
+	]);
+
+	$title.addEventListener('mousedown', ev => {
+		pos = [ev.pageX, ev.pageY];
+		onMoveStart();
+		mousedown = true;
+	});
+	window.addEventListener('mouseup', () => {
+		mousedown = false;
+	});
+	window.addEventListener('mousemove', ({ pageX, pageY }) => {
+		if (mousedown) {
+			const [originalX, originalY] = pos;
+			onMove(pageX - originalX, pageY - originalY);
+		}
+	});
+
+	return $title;
 };
 
-export class WaveWindow {
-	constructor(params) {
-		this._onSuccess = function() {};
-		this._onFail = function() {};
+const WaveWindow = ({ title, dark, width, height, onClose }, children) => {
+	let position = [0, 0];
+	let lockedPosition = [...position];
 
-		this.position = [0, 0];
-
-		this.params = parseParams(params);
-		const { $window, $wrapper } = createWindow(
-			{
-				title: params.title,
-				dark: params.dark,
-				width: params.width,
-				height: params.height,
-				onClose: () => this.close(false),
-			},
-			this.clientArea
-		);
-		this.$window = $window;
-		this.$wrapper = $wrapper;
+	const $window = $element('dialog', { class: windowCss, tabIndex: 0 }, [
+		$element('main', {}, children),
+	]);
+	const $title = createTitle({
+		title,
+		onMoveStart: () => {
+			lockedPosition = [...position];
+		},
+		onMove: (x, y) => {
+			position = [lockedPosition[0] + x, lockedPosition[1] + y];
+			$window.style.transform = `translateX(${position[0]}px) translateY(${
+				position[1]
+			}px)`;
+		},
+		onClose,
+	});
+	$window.prepend($title);
+	const $wrapper = $element('div', { class: wrapper }, [$window]);
+	if (dark) {
+		$wrapper.dataset.dark = true;
 	}
-
 	/*
-		false promise bc I really don't want to find out how ES6 to ES4 promises work right now
+	if (params.theme) {
+		self.$window = self.$window.wrapInner(
+			`<div class="wavelert-u-theme wavelert-u-theme--${params.theme}"></div>`
+		);
+	}
 	*/
-
-	then(callback) {
-		this._onSuccess = callback;
-		return this;
+	if (width) {
+		$window.style.width = width + 'px';
 	}
-	catch(callback) {
-		this._onFail = callback;
-		return this;
+	if (height) {
+		$window.style.height = height + 'px';
 	}
 
-	place() {
-		document.body.appendChild(this.$wrapper);
-		if (this.$window.activate) {
-			this.$window.activate();
-		}
-		return this;
-	}
+	$wrapper.activate = () => {
+		requestAnimationFrame(() => {
+			const $firstButton = $window.querySelector('main button');
+			if ($firstButton) {
+				$firstButton.focus();
+			} else {
+				$window.focus();
+			}
+		});
+	};
 
-	get clientArea() {
-		return this.params.text;
-	}
+	$window.addEventListener('focus', () => {
+		maxZIndex++;
+		$wrapper.style.zIndex = maxZIndex;
+	});
 
-	close(succesfully = true) {
-		this.$wrapper.remove();
-		if (succesfully) {
-			this._onSuccess();
-		} else {
-			this._onFail();
-		}
-	}
-}
+	return $wrapper;
+};
+
+export { WaveWindow };

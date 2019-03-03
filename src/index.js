@@ -1,49 +1,43 @@
-import { $element } from './util';
-import { Dialog } from './global/dialog';
-import { button } from './static/styles.css';
+import { WaveWindow } from './global/WaveWindow';
+import { Dialog } from './global/Dialog';
+import { Alert } from './global/Alert';
+import { Confirm } from './global/Confirm';
 
-class Alert extends Dialog {
-	get buttons() {
-		return [
-			$element(
-				'button',
-				{
-					onClick: () => {
-						this.close(true);
-					},
-					class: button,
-				},
-				['OK']
-			),
-		];
-	}
-}
+const withCloseWrapper = fn => {
+	return {
+		place: () =>
+			new Promise((yay, nay) => {
+				const onClose = state => {
+					$item.remove();
+					state ? yay() : nay();
+				};
+				const $item = fn(onClose);
+				document.body.appendChild($item);
+				if ($item.activate) {
+					$item.activate();
+				}
+			}),
+	};
+};
 
-class Confirm extends Dialog {
-	get buttons() {
-		return [
-			$element(
-				'button',
-				{
-					onClick: () => {
-						this.close(true);
-					},
-					class: button,
-				},
-				['OK']
-			),
-			$element(
-				'button',
-				{
-					onClick: () => {
-						this.close(false);
-					},
-					class: button,
-				},
-				['Cancel']
-			),
-		];
-	}
-}
+const promisified = {
+	Alert: ({ ...props }) => {
+		return withCloseWrapper(closeWrapper =>
+			WaveWindow(
+				{ ...props, onClose: () => closeWrapper(false) },
+				Alert({ ...props, onClose: closeWrapper })
+			)
+		);
+	},
 
-export { Alert, Confirm };
+	Confirm: ({ ...props }) => {
+		return withCloseWrapper(closeWrapper =>
+			WaveWindow(
+				{ ...props, onClose: () => closeWrapper(false) },
+				Confirm({ ...props, onClose: closeWrapper })
+			)
+		);
+	},
+};
+
+export { promisified, Alert, Confirm, Dialog, WaveWindow };

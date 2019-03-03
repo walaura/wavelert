@@ -13,41 +13,44 @@
 		<button class="browser" href="#">alert</button>
 
 		<script>
+			const { Confirm, Alert } = window.wavelert.promisified;
 			document.querySelector('.test').addEventListener('click', () => {
-				new wavelert.Confirm({
+				Confirm({
 					title: 'Wololo',
 					dark: true,
 					icon: 'alert',
 				})
 					.place()
 					.then(() => {
-						new wavelert.Alert({
+						Alert({
 							text: '✨ all is good ✨',
 							theme: 'pink',
 						}).place();
 					})
 					.catch(() => {
-						new wavelert.Alert('💩 you dismissed the alert 💩').place();
+						Alert({ text: '💩 you dismissed the alert 💩' }).place();
 					});
 			});
 			document.querySelector('.window').addEventListener('click', () => {
-				new wavelert.Confirm({
+				Confirm({
 					title: 'Wololo',
 					icon: 'alert',
 				})
 					.place()
 					.then(() => {
-						new wavelert.Alert({
+						Alert({
 							text: '✨ all is good ✨',
 							theme: 'pink',
 						}).place();
 					})
 					.catch(() => {
-						new wavelert.Alert('💩 you dismissed the alert 💩').place();
+						Alert({
+							text: '💩 you dismissed the alert 💩',
+						}).place();
 					});
 			});
 			document.querySelector('.browser').addEventListener('click', () => {
-				new wavelert.Alert({
+				Alert({
 					text: '✨ all is good ✨',
 					theme: 'pink',
 				}).place();
