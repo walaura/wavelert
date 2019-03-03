@@ -62,7 +62,7 @@
 		Alert({
 			title: 'Wavelert',
 			dark: true,
-			text:
+			children:
 				'Wavelert is a small javascript library that lets you display Windows-98 styled alerts & confirms',
 		})();
 
@@ -74,12 +74,12 @@
 			})()
 				.then(() => {
 					Alert({
-						text: '✨ all is good ✨',
+						children: '✨ all is good ✨',
 						theme: 'pink',
 					})();
 				})
 				.catch(() => {
-					Alert({ text: '💩 you dismissed the alert 💩' })();
+					Alert({ children: '💩 you dismissed the alert 💩' })();
 				});
 		});
 	</script>

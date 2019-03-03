@@ -3,9 +3,9 @@ import { createElement } from './util';
 import { message, buttons as buttonsCss, dialog } from './Dialog.css';
 import { glyph } from './static/glyph.css';
 
-export const Dialog = ({ buttons, icon, text }) => {
-	if (!text) {
-		text = 'The window at ' + window.location.href + ' says nothing';
+export const Dialog = ({ buttons, icon, children }) => {
+	if (!children) {
+		children = 'The window at ' + window.location.href + ' says nothing';
 	}
 	const $dialog = createElement('div', { class: dialog }, [
 		createElement('div', { class: message, 'data-icon': !!icon }, [
@@ -14,7 +14,7 @@ export const Dialog = ({ buttons, icon, text }) => {
 					class: glyph,
 					'data-glyph': icon,
 				}),
-			text,
+			children,
 		]),
 		createElement('div', { class: buttonsCss }, buttons),
 	]);

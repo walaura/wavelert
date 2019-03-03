@@ -1,7 +1,7 @@
 import { Dialog } from './Dialog';
 import { Button } from './Button';
 
-const Confirm = ({ icon, text, onClose }) =>
+const Confirm = ({ icon, children, onClose }) =>
 	Dialog({
 		buttons: [
 			Button({
@@ -18,7 +18,7 @@ const Confirm = ({ icon, text, onClose }) =>
 			}),
 		],
 		icon,
-		text,
+		children,
 	});
 
 export { Confirm };

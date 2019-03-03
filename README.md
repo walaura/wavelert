@@ -19,16 +19,16 @@ You can build alerts & confirms as promises that accept or reject depending on t
 ```js
 import { Confirm, Alert } from 'wavelert/promisified';
 
-const promisifiedAlert = Confirm({ text: 'are you sure?' });
+const promisifiedAlert = Confirm({ children: 'are you sure?' });
 promisifiedAlert()
 	.then(() => {
 		Alert({
-			text: '✨ all is good ✨',
+			children: '✨ all is good ✨',
 			theme: 'pink',
 		})(); /*creating it returns a function that opens it you you gotta call it*/
 	})
 	.catch(() => {
-		Alert({ text: '💩 you dismissed the alert 💩' })();
+		Alert({ children: '💩 you dismissed the alert 💩' })();
 	});
 ```
 
@@ -39,12 +39,12 @@ You can generate HTMl elements for all items buy calling them directly and passi
 ```js
 import { Alert, WaveWindow } from 'wavelert';
 
-const $window = WaveWindow(
-	{ theme: 'pink' },
-	Alert({
-		text: '✨ all is good ✨',
-	})
-);
+const $window = WaveWindow({
+	theme: 'pink',
+	children: Alert({
+		children: '✨ all is good ✨',
+	}),
+});
 
 document.appendChild($window);
 ```
@@ -64,10 +64,10 @@ $('.🆒').on('click', function() {
 			icon: 'alert',
 		})
 		.then(() => {
-			window.wavelert.Alert({ text: '✨ all is good ✨' });
+			window.wavelert.Alert({ children: '✨ all is good ✨' });
 		})
 		.catch(() => {
-			window.wavelert.Alert({ text: '💩 you dismissed the alert 💩' });
+			window.wavelert.Alert({ children: '💩 you dismissed the alert 💩' });
 		});
 });
 ```

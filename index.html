@@ -22,12 +22,12 @@
 				})()
 					.then(() => {
 						Alert({
-							text: '✨ all is good ✨',
+							children: '✨ all is good ✨',
 							theme: 'pink',
 						})();
 					})
 					.catch(() => {
-						Alert({ text: '💩 you dismissed the alert 💩' })();
+						Alert({ children: '💩 you dismissed the alert 💩' })();
 					});
 			});
 			document.querySelector('.window').addEventListener('click', () => {
@@ -37,19 +37,19 @@
 				})()
 					.then(() => {
 						Alert({
-							text: '✨ all is good ✨',
+							children: '✨ all is good ✨',
 							theme: 'pink',
 						})();
 					})
 					.catch(() => {
 						Alert({
-							text: '💩 you dismissed the alert 💩',
+							children: '💩 you dismissed the alert 💩',
 						})();
 					});
 			});
 			document.querySelector('.browser').addEventListener('click', () => {
 				Alert({
-					text: '✨ all is good ✨',
+					children: '✨ all is good ✨',
 					theme: 'pink',
 				})();
 			});

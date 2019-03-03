@@ -1,7 +1,7 @@
 import { Dialog } from './Dialog';
 import { Button } from './Button';
 
-const Alert = ({ icon, text, onClose }) =>
+const Alert = ({ icon, children, onClose }) =>
 	Dialog({
 		buttons: [
 			Button({
@@ -12,7 +12,7 @@ const Alert = ({ icon, text, onClose }) =>
 			}),
 		],
 		icon,
-		text,
+		children,
 	});
 
 export { Alert };
