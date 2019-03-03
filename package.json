@@ -6,7 +6,6 @@
 	},
 	"dependencies": {
 		"autoprefixer": "^9.4.9",
-		"dialog.css": "0.0.2",
 		"parcel": "^1.11.0",
 		"postcss-modules": "^1.4.1"
 	},
