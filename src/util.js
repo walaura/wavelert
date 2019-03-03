@@ -1,4 +1,4 @@
-export const $element = (el, props = {}, children = []) => {
+export const createElement = (el, props = {}, children = []) => {
 	const $el = document.createElement(el);
 	Object.entries(props).forEach(([k, v]) => {
 		if (k.substring(0, 2) === 'on') {

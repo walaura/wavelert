@@ -4,22 +4,18 @@ import { Button } from './Button';
 const Confirm = ({ icon, text, onClose }) =>
 	Dialog({
 		buttons: [
-			Button(
-				{
-					onClick: () => {
-						onClose(true);
-					},
+			Button({
+				onClick: () => {
+					onClose(true);
 				},
-				'OK'
-			),
-			Button(
-				{
-					onClick: () => {
-						onClose(false);
-					},
+				children: 'OK',
+			}),
+			Button({
+				onClick: () => {
+					onClose(false);
 				},
-				'Cancel'
-			),
+				children: 'Cancel',
+			}),
 		],
 		icon,
 		text,

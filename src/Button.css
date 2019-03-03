@@ -1,5 +1,5 @@
 .button {
-	composes: surface from '../static/styles.css';
+	composes: surface from './static/styles.css';
 	padding: 0.25em 1em 0.4em;
 	text-align: center;
 	display: inline-block;

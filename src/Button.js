@@ -1,8 +1,8 @@
-import { $element } from './util';
+import { createElement } from './util';
 import { button } from './Button.css';
 
-const Button = (props, children) =>
-	$element(
+const Button = ({ children, ...props }) =>
+	createElement(
 		'button',
 		{
 			class: button,

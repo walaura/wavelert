@@ -6,16 +6,18 @@ import { withCloseWrapper } from './src/util';
 export const promisified = {
 	Alert: ({ ...props }) =>
 		withCloseWrapper(closeWrapper =>
-			WaveWindow(
-				{ ...props, onClose: () => closeWrapper(false) },
-				Alert({ ...props, onClose: closeWrapper })
-			)
+			WaveWindow({
+				...props,
+				onClose: () => closeWrapper(false),
+				children: Alert({ ...props, onClose: closeWrapper }),
+			})
 		),
 	Confirm: ({ ...props }) =>
 		withCloseWrapper(closeWrapper =>
-			WaveWindow(
-				{ ...props, onClose: () => closeWrapper(false) },
-				Confirm({ ...props, onClose: closeWrapper })
-			)
+			WaveWindow({
+				...props,
+				onClose: () => closeWrapper(false),
+				children: Confirm({ ...props, onClose: closeWrapper }),
+			})
 		),
 };

@@ -37,7 +37,7 @@
 }
 
 .window {
-	composes: surface from '../static/styles.css';
+	composes: surface from './static/styles.css';
 	padding: 2px;
 	border: 1px solid rgba(0, 0, 0, 1);
 	border-top: none;
@@ -81,7 +81,7 @@
 }
 
 .titleButton {
-	composes: surface from '../static/styles.css';
+	composes: surface from './static/styles.css';
 	float: right;
 	height: 1.25em;
 	width: 1.25em;

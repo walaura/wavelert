@@ -1,4 +1,4 @@
-import { $element } from './util';
+import { createElement } from './util';
 import {
 	window as windowCss,
 	titleButton,
@@ -13,15 +13,15 @@ const createTitle = ({ title, onMove, onMoveStart, onClose }) => {
 	let mousedown = false;
 	let pos = [0, 0];
 
-	const $title = $element('header', { class: windowTitle }, [
+	const $title = createElement('header', { class: windowTitle }, [
 		title,
-		$element(
+		createElement(
 			'button',
 			{
 				class: titleButton,
 				onClick: onClose,
 			},
-			$element('img', { src: closeIcon })
+			createElement('img', { src: closeIcon })
 		),
 	]);
 
@@ -43,15 +43,20 @@ const createTitle = ({ title, onMove, onMoveStart, onClose }) => {
 	return $title;
 };
 
-const WaveWindow = (
-	{ title, dark, width, height, onClose, theme },
-	children
-) => {
+const WaveWindow = ({
+	title,
+	dark,
+	width,
+	height,
+	onClose,
+	theme,
+	children,
+}) => {
 	let position = [0, 0];
 	let lockedPosition = [...position];
 
-	const $window = $element('dialog', { class: windowCss, tabIndex: 0 }, [
-		$element('main', {}, children),
+	const $window = createElement('dialog', { class: windowCss, tabIndex: 0 }, [
+		createElement('main', {}, children),
 	]);
 	const $title = createTitle({
 		title,
@@ -67,7 +72,7 @@ const WaveWindow = (
 		onClose,
 	});
 	$window.prepend($title);
-	const $wrapper = $element(
+	const $wrapper = createElement(
 		'div',
 		{ class: wrapper, 'data-dark': dark, 'data-theme': theme },
 		[$window]

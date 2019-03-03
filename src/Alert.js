@@ -4,14 +4,12 @@ import { Button } from './Button';
 const Alert = ({ icon, text, onClose }) =>
 	Dialog({
 		buttons: [
-			Button(
-				{
-					onClick: () => {
-						onClose(true);
-					},
+			Button({
+				onClick: () => {
+					onClose(true);
 				},
-				'OK'
-			),
+				children: 'OK',
+			}),
 		],
 		icon,
 		text,
