@@ -1,0 +1,34 @@
+.surface {
+	background: var(--background);
+	color: #000;
+	text-decoration: inherit;
+	padding: 1px;
+	position: relative;
+	border: 1px solid #000;
+	border-top-color: rgba(255, 255, 255, 0.75);
+	border-left-color: rgba(255, 255, 255, 0.75);
+	-webkit-user-select: none;
+	-webkit-user-drag: none;
+	user-select: none;
+	user-drag: none;
+	cursor: default;
+}
+.surface:after,
+.surface:before {
+	content: '';
+	position: absolute;
+	z-index: 9;
+	pointer-events: none;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+.surface:before {
+	border: 1px solid transparent;
+	border-right-color: rgba(0, 0, 0, 0.5);
+	border-bottom-color: rgba(0, 0, 0, 0.5);
+}
+.surface * {
+	z-index: 10;
+}

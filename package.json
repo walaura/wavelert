@@ -1,8 +1,18 @@
 {
-  "devDependencies": {
-    "babelify": "^6.1.3",
-    "browserify": "^11.0.1",
-    "gulp": "^3.9.0",
-    "vinyl-source-stream": "^1.1.0"
-  }
+	"scripts": {
+		"build": "parcel build --global=wavelert --out-file=wavelert.js src/index.js",
+		"gh-pages": "parcel build --global=wavelert --out-dir=gh-pages --out-file=index.html gh-pages.html",
+		"watch": "parcel --global=wavelert index.html"
+	},
+	"dependencies": {
+		"autoprefixer": "^9.4.9",
+		"dialog.css": "0.0.2",
+		"parcel": "^1.11.0",
+		"postcss-modules": "^1.4.1"
+	},
+	"devDependencies": {
+		"caniuse-lite": "^1.0.30000939",
+		"postcss-cssnext": "^3.1.0",
+		"postcss-preset-env": "^6.6.0"
+	}
 }

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Wavelert</title>
+		<link rel="shortcut icon" href="favicon.png" />
+		<script src="src/index.js"></script>
+
+		<style type="text/css">
+			html {
+				height: 100%;
+				overflow: hidden;
+			}
+			body {
+				margin: 0;
+				padding: 0;
+				background: #78acdc url(http://i.imgur.com/iPTRtKC.jpg) center center;
+				background-size: cover;
+				height: 100%;
+				display: flex;
+				align-content: center;
+				align-items: center;
+				justify-content: center;
+				flex-direction: column;
+			}
+			:global(.button) {
+				font: 0.7em tahoma, verdana, sans-serif;
+				text-decoration: none;
+				color: #000;
+				letter-spacing: 0.05em;
+				padding: 1em 2em;
+				-webkit-font-smoothing: none;
+				font-smoothing: none;
+				background: #c0c0c0;
+				border: 1px solid #000;
+				border-top-color: rgba(255, 255, 255, 0.75);
+				border-left-color: rgba(255, 255, 255, 0.75);
+			}
+			:global(.button):active {
+				border-bottom-color: rgba(255, 255, 255, 0.75);
+				border-right-color: rgba(255, 255, 255, 0.75);
+				border-top-color: #000;
+				border-left-color: #000;
+			}
+			:global(.button--larger) {
+				margin-bottom: 1em;
+				padding: 1.5em 6em;
+				text-transform: uppercase;
+			}
+		</style>
+	</head>
+
+	<body>
+		<button class="button button--larger" id="largor">Click for a demo</button>
+		<a class="button" href="https://github.com/walaura/Wavelert"
+			>Get the code</a
+		>
+	</body>
+	<script>
+		const { Confirm, Alert } = window.wavelert.promisified;
+
+		Alert({
+			title: 'Wavelert',
+			dark: true,
+			text:
+				'Wavelert is a small javascript library that lets you display Windows-98 styled alerts & confirms',
+		})();
+
+		largor.addEventListener('click', () => {
+			Confirm({
+				title: 'Wololo',
+				dark: true,
+				icon: 'alert',
+			})()
+				.then(() => {
+					Alert({
+						text: '✨ all is good ✨',
+						theme: 'pink',
+					})();
+				})
+				.catch(() => {
+					Alert({ text: '💩 you dismissed the alert 💩' })();
+				});
+		});
+	</script>
+</html>
