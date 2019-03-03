@@ -5,7 +5,7 @@ import {
 	windowTitle,
 	wrapper,
 } from './WaveWindow.css';
-import closeIcon from '../static/close.gif';
+import closeIcon from './static/close.gif';
 
 let maxZIndex = 10;
 
