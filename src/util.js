@@ -24,3 +24,16 @@ export const $element = (el, props = {}, children = []) => {
 
 	return $el;
 };
+
+export const withCloseWrapper = fn => () =>
+	new Promise((yay, nay) => {
+		const onClose = state => {
+			$item.remove();
+			state ? yay() : nay();
+		};
+		const $item = fn(onClose);
+		document.body.appendChild($item);
+		if ($item.activate) {
+			$item.activate();
+		}
+	});

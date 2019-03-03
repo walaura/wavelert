@@ -2,54 +2,92 @@
 
 Windows 98 style javascript prompts.
 
-![lol](https://raw.github.com/walaura/Wavelert/master/screenshot.gif?lol)
+<div align=center>
+
+![lol](https://raw.github.com/walaura/Wavelert/master/screenshot.gif)
+
+</div>
 
 ## But…why?
 
 Regular alerts just look worse and less cool than they used to. Also, I wanted to use ES6 syntax for _something_
 
-## ES6 browser usage
+## Promises
 
-Import any module, then init it and `place()` it on your html. You don't need wavelert.min.js
+You can build alerts & confirms as promises that accept or reject depending on the button that was pressed like this
 
-    import {Alert}   from 'wavelert/alert';
-    import {Confirm} from 'wavelert/confirm';
+```js
+import { Confirm, Alert } from 'wavelert/promisified';
 
-    $('.🆒').on('click',function(){
-    	var cf = new Confirm('Are you sure?').place()
-    	cf.success(function(){
-            new Alert('✨ all is good ✨').place();
-        })
-        cf.fail(function(){
-            new Alert('💩 you dismissed the alert 💩').place();
-    	});
-    });
+const promisifiedAlert = Confirm({ text: 'are you sure?' });
+promisifiedAlert()
+	.then(() => {
+		Alert({
+			text: '✨ all is good ✨',
+			theme: 'pink',
+		})(); /*creating it returns a function that opens it you you gotta call it*/
+	})
+	.catch(() => {
+		Alert({ text: '💩 you dismissed the alert 💩' })();
+	});
+```
+
+## HTML Elements
+
+You can generate HTMl elements for all items buy calling them directly and passing props
+
+```js
+import { Alert, WaveWindow } from 'wavelert';
+
+const $window = WaveWindow(
+	{ theme: 'pink' },
+	Alert({
+		text: '✨ all is good ✨',
+	})
+);
+
+document.appendChild($window);
+```
 
 ## Legacy browser usage
 
-With jQuery already loaded, add a regular script tag for dist/wavelert.min.js. You can use wavelert.confirm and wavelert.alert
+All of these things are also in `window.wavelert` if you need them
 
 Check the [live demo](http://walaura.github.io/wavelert/) for details.
 
-    $('.🆒').on('click',function(){
-    	wavelert.confirm({
-    		title: 'Wololo',
-    		dark: true,
-    		icon: 'alert'
-    	}).success(function(){
-            wavelert.alert('✨ all is good ✨');
-        }).fail(function(){
-            wavelert.alert('💩 you dismissed the alert 💩');
-    	})
-    });
+```js
+$('.🆒').on('click', function() {
+	window.wavelert
+		.Confirm({
+			title: 'Wololo',
+			dark: true,
+			icon: 'alert',
+		})
+		.then(() => {
+			window.wavelert.Alert({ text: '✨ all is good ✨' });
+		})
+		.catch(() => {
+			window.wavelert.Alert({ text: '💩 you dismissed the alert 💩' });
+		});
+});
+```
 
-## Building wavelert.min.js
+## Building wavelert
 
-Just install gulp if you don't have it already
+Super easy, it uses parcel
 
-    sudo npm install --global gulp
+```
+npm run watch
+```
 
-Then gulp everything whenever you want to see changes
+Create a production build with
 
-    sudo npm install
-    gulp
+```
+npm run build
+```
+
+And build the github page with
+
+```
+npm run gh-pages
+```
