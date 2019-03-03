@@ -1,0 +1,7 @@
+.glyph[data-glyph='close']:before {
+	content: url(close.gif);
+}
+
+.glyph[data-glyph='alert']:before {
+	content: url(alert.png);
+}

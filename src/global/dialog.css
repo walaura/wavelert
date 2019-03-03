@@ -1,0 +1,23 @@
+.dialog {
+	padding: 0.75em;
+}
+
+.message {
+	margin-bottom: 1.25em;
+	overflow: hidden;
+	display: flex;
+}
+
+.message[data-icon='true'] {
+	display: grid;
+	grid-template-columns: max-content 1fr;
+	grid-gap: 1em;
+}
+
+.buttons {
+	display: grid;
+	grid-auto-columns: 6em;
+	grid-auto-flow: column;
+	grid-gap: 0.25em;
+	justify-content: center;
+}
