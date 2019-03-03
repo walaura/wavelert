@@ -1,6 +1,6 @@
-import { WaveWindow } from './src/global/WaveWindow';
-import { Alert } from './src/global/Alert';
-import { Confirm } from './src/global/Confirm';
+import { WaveWindow } from './src/WaveWindow';
+import { Alert } from './src/Alert';
+import { Confirm } from './src/Confirm';
 import { withCloseWrapper } from './src/util';
 
 export const promisified = {

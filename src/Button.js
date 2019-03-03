@@ -1,4 +1,4 @@
-import { $element } from '../util';
+import { $element } from './util';
 import { button } from './Button.css';
 
 const Button = (props, children) =>

@@ -1,4 +1,4 @@
-import { $element } from '../util';
+import { $element } from './util';
 
 import { message, buttons as buttonsCss, dialog } from './Dialog.css';
 import { glyph } from '../static/glyph.css';

@@ -1,9 +1,6 @@
 export const $element = (el, props = {}, children = []) => {
 	const $el = document.createElement(el);
 	Object.entries(props).forEach(([k, v]) => {
-		if (k === 'onCreateElement') {
-			v();
-		}
 		if (k.substring(0, 2) === 'on') {
 			$el.addEventListener(k.substring(2).toLowerCase(), v);
 		} else {

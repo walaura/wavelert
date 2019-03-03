@@ -1,4 +1,4 @@
-import { $element } from '../util';
+import { $element } from './util';
 import {
 	window as windowCss,
 	titleButton,
