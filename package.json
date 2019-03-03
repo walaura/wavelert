@@ -1,8 +1,12 @@
 {
-  "devDependencies": {
-    "babelify": "^6.1.3",
-    "browserify": "^11.0.1",
-    "gulp": "^3.9.0",
-    "vinyl-source-stream": "^1.1.0"
-  }
+	"scripts": {
+		"build": "parcel build --global=wavelert index.html",
+		"watch": "parcel --global=wavelert index.html"
+	},
+	"dependencies": {
+		"autoprefixer": "^9.4.9",
+		"dialog.css": "0.0.2",
+		"parcel": "^1.11.0",
+		"postcss-modules": "^1.4.1"
+	}
 }

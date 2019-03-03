@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Wavelert</title>
+
+		<script src="src/index.js"></script>
+	</head>
+
+	<body>
+		<button class="test" href="#">confirm</button>
+		<button class="window" href="#">window</button>
+		<button class="browser" href="#">alert</button>
+
+		<script>
+			document.querySelector('.test').addEventListener('click', () => {
+				new wavelert.Confirm({
+					title: 'Wololo',
+					dark: true,
+					icon: 'alert',
+				})
+					.place()
+					.then(() => {
+						new wavelert.Alert({
+							text: '✨ all is good ✨',
+							theme: 'pink',
+						}).place();
+					})
+					.catch(() => {
+						new wavelert.Alert('💩 you dismissed the alert 💩').place();
+					});
+			});
+			document.querySelector('.window').addEventListener('click', () => {
+				new wavelert.Confirm({
+					title: 'Wololo',
+					icon: 'alert',
+				})
+					.place()
+					.then(() => {
+						new wavelert.Alert({
+							text: '✨ all is good ✨',
+							theme: 'pink',
+						}).place();
+					})
+					.catch(() => {
+						new wavelert.Alert('💩 you dismissed the alert 💩').place();
+					});
+			});
+			document.querySelector('.browser').addEventListener('click', () => {
+				new wavelert.Alert({
+					text: '✨ all is good ✨',
+					theme: 'pink',
+				}).place();
+			});
+		</script>
+	</body>
+</html>
