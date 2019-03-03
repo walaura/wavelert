@@ -19,41 +19,39 @@
 					title: 'Wololo',
 					dark: true,
 					icon: 'alert',
-				})
-					.place()
+				})()
 					.then(() => {
 						Alert({
 							text: '✨ all is good ✨',
 							theme: 'pink',
-						}).place();
+						})();
 					})
 					.catch(() => {
-						Alert({ text: '💩 you dismissed the alert 💩' }).place();
+						Alert({ text: '💩 you dismissed the alert 💩' })();
 					});
 			});
 			document.querySelector('.window').addEventListener('click', () => {
 				Confirm({
 					title: 'Wololo',
 					icon: 'alert',
-				})
-					.place()
+				})()
 					.then(() => {
 						Alert({
 							text: '✨ all is good ✨',
 							theme: 'pink',
-						}).place();
+						})();
 					})
 					.catch(() => {
 						Alert({
 							text: '💩 you dismissed the alert 💩',
-						}).place();
+						})();
 					});
 			});
 			document.querySelector('.browser').addEventListener('click', () => {
 				Alert({
 					text: '✨ all is good ✨',
 					theme: 'pink',
-				}).place();
+				})();
 			});
 		</script>
 	</body>
