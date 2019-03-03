@@ -14,8 +14,20 @@
 	font-size: 11px;
 	letter-spacing: 0.33px;
 	-webkit-font-smoothing: none;
-	font-family: tahoma, sans-serif;
+	font-family: var(--font);
 }
+
+.wrapper {
+	--background: #c0c0c0;
+	--highlight: #000080;
+	--font: tahoma, sans-serif;
+}
+.wrapper[data-theme='pink'] {
+	--background: #d068d9;
+	--highlight: #00ff00;
+	--font: fantasy;
+}
+
 .wrapper[data-dark='true'] {
 	background: url(data:image/gif;base64,R0lGODlhAgACAIAAAP///wAAACH5BAEAAAAALAAAAAACAAIAQAIDDBAFADs=);
 	pointer-events: all;
@@ -48,7 +60,7 @@
 }
 .window:focus .windowTitle,
 .window:focus-within .windowTitle {
-	background-color: #000080;
+	background-color: var(--highlight);
 	color: #fff;
 }
 .window:focus {

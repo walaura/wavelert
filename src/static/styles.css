@@ -1,12 +1,5 @@
-.wavelert-u-theme--pink .wavelert-u-surface {
-	background: #d068d9;
-}
-.wavelert-u-theme--pink .wavelert-u-surfaceActive {
-	background: #00ff00;
-}
-
 .surface {
-	background: #c0c0c0;
+	background: var(--background);
 	color: #000;
 	text-decoration: inherit;
 	padding: 1px;

@@ -43,7 +43,10 @@ const createTitle = ({ title, onMove, onMoveStart, onClose }) => {
 	return $title;
 };
 
-const WaveWindow = ({ title, dark, width, height, onClose }, children) => {
+const WaveWindow = (
+	{ title, dark, width, height, onClose, theme },
+	children
+) => {
 	let position = [0, 0];
 	let lockedPosition = [...position];
 
@@ -64,17 +67,11 @@ const WaveWindow = ({ title, dark, width, height, onClose }, children) => {
 		onClose,
 	});
 	$window.prepend($title);
-	const $wrapper = $element('div', { class: wrapper }, [$window]);
-	if (dark) {
-		$wrapper.dataset.dark = true;
-	}
-	/*
-	if (params.theme) {
-		self.$window = self.$window.wrapInner(
-			`<div class="wavelert-u-theme wavelert-u-theme--${params.theme}"></div>`
-		);
-	}
-	*/
+	const $wrapper = $element(
+		'div',
+		{ class: wrapper, 'data-dark': dark, 'data-theme': theme },
+		[$window]
+	);
 	if (width) {
 		$window.style.width = width + 'px';
 	}
