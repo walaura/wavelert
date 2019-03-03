@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Wavelert</title>
+
+		<script src="/src.a2b27638.js"></script>
+	<link rel="stylesheet" href="/src.a2b27638.css"></head>
+
+	<body>
+		<button class="test" href="#">confirm</button>
+		<button class="window" href="#">window</button>
+		<button class="browser" href="#">alert</button>
+
+		<script>var _window$wavelert$prom = window.wavelert.promisified,
+    Confirm = _window$wavelert$prom.Confirm,
+    Alert = _window$wavelert$prom.Alert;
+document.querySelector('.test').addEventListener('click', function () {
+  Confirm({
+    title: 'Wololo',
+    dark: true,
+    icon: 'alert'
+  })().then(function () {
+    Alert({
+      text: '✨ all is good ✨',
+      theme: 'pink'
+    })();
+  }).catch(function () {
+    Alert({
+      text: '💩 you dismissed the alert 💩'
+    })();
+  });
+});
+document.querySelector('.window').addEventListener('click', function () {
+  Confirm({
+    title: 'Wololo',
+    icon: 'alert'
+  })().then(function () {
+    Alert({
+      text: '✨ all is good ✨',
+      theme: 'pink'
+    })();
+  }).catch(function () {
+    Alert({
+      text: '💩 you dismissed the alert 💩'
+    })();
+  });
+});
+document.querySelector('.browser').addEventListener('click', function () {
+  Alert({
+    text: '✨ all is good ✨',
+    theme: 'pink'
+  })();
+});</script>
+	</body>
+</html>

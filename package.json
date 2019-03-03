@@ -1,6 +1,7 @@
 {
 	"scripts": {
-		"build": "parcel build --global=wavelert index.html",
+		"build": "parcel build --global=wavelert --out-file=wavelert.js src/index.js",
+		"gh-pages": "parcel --global=wavelert --out-dir=gh-pages --out-file=index.html gh-pages.html",
 		"watch": "parcel --global=wavelert index.html"
 	},
 	"dependencies": {
@@ -11,6 +12,7 @@
 	},
 	"devDependencies": {
 		"caniuse-lite": "^1.0.30000939",
-		"postcss-cssnext": "^3.1.0"
+		"postcss-cssnext": "^3.1.0",
+		"postcss-preset-env": "^6.6.0"
 	}
 }

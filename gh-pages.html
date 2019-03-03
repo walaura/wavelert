@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Wavelert</title>
+
+		<script src="src/index.js"></script>
+	</head>
+
+	<body>
+		<button class="test" href="#">confirm</button>
+		<button class="window" href="#">window</button>
+		<button class="browser" href="#">alert</button>
+
+		<script>
+			const { Confirm, Alert } = window.wavelert.promisified;
+			document.querySelector('.test').addEventListener('click', () => {
+				Confirm({
+					title: 'Wololo',
+					dark: true,
+					icon: 'alert',
+				})()
+					.then(() => {
+						Alert({
+							text: '✨ all is good ✨',
+							theme: 'pink',
+						})();
+					})
+					.catch(() => {
+						Alert({ text: '💩 you dismissed the alert 💩' })();
+					});
+			});
+			document.querySelector('.window').addEventListener('click', () => {
+				Confirm({
+					title: 'Wololo',
+					icon: 'alert',
+				})()
+					.then(() => {
+						Alert({
+							text: '✨ all is good ✨',
+							theme: 'pink',
+						})();
+					})
+					.catch(() => {
+						Alert({
+							text: '💩 you dismissed the alert 💩',
+						})();
+					});
+			});
+			document.querySelector('.browser').addEventListener('click', () => {
+				Alert({
+					text: '✨ all is good ✨',
+					theme: 'pink',
+				})();
+			});
+		</script>
+	</body>
+</html>
