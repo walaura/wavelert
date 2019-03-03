@@ -1,7 +1,7 @@
 {
 	"scripts": {
 		"build": "parcel build --global=wavelert --out-file=wavelert.js src/index.js",
-		"gh-pages": "parcel build --public-url=wavelert --global=wavelert --out-dir=docs --out-file=index.html gh-pages.html",
+		"gh-pages": "parcel build --public-url='/wavelert' --global=wavelert --out-dir=docs --out-file=index.html gh-pages.html",
 		"watch": "parcel --global=wavelert index.html"
 	},
 	"dependencies": {
