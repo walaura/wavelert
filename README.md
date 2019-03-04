@@ -14,7 +14,7 @@ Regular alerts just look worse and less cool than they used to. Also, I wanted t
 
 ## Promises
 
-You can build alerts & confirms as promises that accept or reject depending on the button that was pressed like this
+You can build alerts & confirms as promises that accept or reject depending on the button that was pressed like this, the promisified methods return a function that when called will display the window visually and returns a promise
 
 ```js
 import { Confirm, Alert } from 'wavelert/promisified';
@@ -25,7 +25,7 @@ promisifiedAlert()
 		Alert({
 			children: '✨ all is good ✨',
 			theme: 'pink',
-		})(); /*creating it returns a function that opens it you you gotta call it*/
+		})(); /*creating it returns a function that opens it so you gotta call it*/
 	})
 	.catch(() => {
 		Alert({ children: '💩 you dismissed the alert 💩' })();
@@ -34,7 +34,7 @@ promisifiedAlert()
 
 ## HTML Elements
 
-You can generate HTMl elements for all items buy calling them directly and passing props
+You can generate HTML elements for all items by calling them directly and passing props
 
 ```js
 import { Alert, WaveWindow } from 'wavelert';
@@ -51,24 +51,25 @@ document.appendChild($window);
 
 ## Legacy browser usage
 
-All of these things are also in `window.wavelert` if you need them
+All of these things are also in `window.wavelert` if you need them, promisified methods live in `window.wavelert.promisified`
 
 Check the [live demo](http://walaura.github.io/wavelert/) for details.
 
 ```js
-$('.🆒').on('click', function() {
-	window.wavelert
-		.Confirm({
-			title: 'Wololo',
-			dark: true,
-			icon: 'alert',
-		})
-		.then(() => {
-			window.wavelert.Alert({ children: '✨ all is good ✨' });
-		})
-		.catch(() => {
-			window.wavelert.Alert({ children: '💩 you dismissed the alert 💩' });
-		});
+const = {Confirm, Alert} = window.wavelert.promisified;
+
+document.querySelector('#🆒').addEventListener('click', () => {
+	Confirm({
+		title: 'Wololo',
+		dark: true,
+		icon: 'alert',
+	})
+	.then(() => 
+		Alert({ children: '✨ all is good ✨' });
+	)
+	.catch(() => 
+		Alert({ children: '💩 you dismissed the alert 💩' });
+	);
 });
 ```
 
