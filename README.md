@@ -1,6 +1,6 @@
 # Wavelert
 
-Windows 98 style javascript prompts!
+Windows 98 style javascript prompts.
 
 <div align=center>
 
