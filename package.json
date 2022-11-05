@@ -9,7 +9,7 @@
 	"dependencies": {
 		"autoprefixer": "^9.4.9",
 		"parcel": "^1.11.0",
-		"postcss-modules": "^1.4.1"
+		"postcss-modules": "^4.3.0"
 	},
 	"devDependencies": {
 		"caniuse-lite": "^1.0.30000939",
