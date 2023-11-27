@@ -8,8 +8,8 @@
 	},
 	"dependencies": {
 		"autoprefixer": "^9.4.9",
-		"parcel": "^1.11.0",
-		"postcss-modules": "^1.4.1"
+		"parcel": "^2.0.0",
+		"postcss-modules": "^3.0.0"
 	},
 	"devDependencies": {
 		"caniuse-lite": "^1.0.30000939",
